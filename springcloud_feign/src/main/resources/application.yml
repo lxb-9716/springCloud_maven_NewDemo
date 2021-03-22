@@ -1,3 +1,3 @@
 spring:
   profiles:
-    active: eurekaClient,feignClient,mysql
+    active: eurekaClient,feignClient,db
