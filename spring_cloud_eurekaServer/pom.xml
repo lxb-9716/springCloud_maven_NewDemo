@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.it.springcloud</groupId>
+    <groupId>com.it.springboot</groupId>
     <artifactId>spring_cloud_eurekaServer</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>

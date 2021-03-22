@@ -11,4 +11,4 @@ eureka:
     hostname: localhost #当前服务的主机名
     instanceId: http://${eureka.instance.hostname}:${server.port}/eureka/   #当前注册中心服务的唯一id
 server:
-  port: 31003
+  port: 31004
