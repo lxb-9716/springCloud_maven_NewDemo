@@ -1,3 +1,6 @@
-spring:
+Spring:
   profiles:
-    active: eurekaClient,feignClient,db
+    active: feign,db
+server:
+  port: 31004
+

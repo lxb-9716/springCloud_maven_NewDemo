@@ -14,6 +14,8 @@
         <module>springcloud_common</module>
         <module>springcloud_model</module>
         <module>spring_cloud_eurekaServer</module>
+        <module>springcloud_config_server</module>
+        <module>springcloud_config_client</module>
     </modules>
 
     <parent>

@@ -1,6 +1,8 @@
+server:
+  port: 31006
 spring:
   application:
-    name: spring-cloud-feign
+    name: spring-cloud-cinfig-client
 eureka:
   client:
     fetch-registry: true #是否需要从服务端获取注册信息
@@ -10,5 +12,3 @@ eureka:
   instance:
     hostname: localhost #当前服务的主机名
     instanceId: http://${eureka.instance.hostname}:${server.port}/eureka/   #当前注册中心服务的唯一id
-server:
-  port: 31004

@@ -9,6 +9,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="spring_cloud_eurekaServer" />
         <module name="springcloud_common" />
+        <module name="springcloud_config_client" />
+        <module name="springcloud_config_server" />
         <module name="springcloud_feign" />
         <module name="springcloud_model" />
         <module name="springcloud_swagger_data" />

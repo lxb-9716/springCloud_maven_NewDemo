@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      name: configTest #指定要获取的配置文件的名字
+      discovery:
+        enabled: true #开启配置信息发现
+        serviceId: spring-cloud-cinfig-server #指定配置中心服务的id

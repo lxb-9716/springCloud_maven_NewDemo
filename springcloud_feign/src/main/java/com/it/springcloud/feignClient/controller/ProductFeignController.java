@@ -7,11 +7,21 @@ import com.it.springcloud.common.response.ResponseResult;
 import com.it.springcloud.feignClient.feign.productFeign.ProductFeignClient;
 import com.it.springcloud.model.productVO.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/productFeignClient")
 public class ProductFeignController {
+
+    @Value("${version}")
+    private volatile String version;
+
+    @GetMapping("/testConfig")
+    public String testConfig() {
+        System.out.println("version：" + version);
+        return "version：" + version;
+    }
 
     @Autowired
     private ProductFeignClient productFeignClient;
