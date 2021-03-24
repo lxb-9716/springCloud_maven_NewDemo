@@ -11,6 +11,6 @@ eureka:
     hostname: eurekaServer1 #当前服务的主机名
     instance-id: http://${eureka.instance.hostname}:${server.port}/eureka/   #当前注册中心服务的唯一id
   server:
-    enable-self-preservation: false  #开启eureka的自我保护机制
+    enable-self-preservation: false  #关闭eureka的自我保护机制
 server:
   port: 31001

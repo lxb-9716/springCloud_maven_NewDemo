@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class ProductFeignController {
 
     @Value("${version}")
-    private volatile String version;
+    private String version;
 
     @GetMapping("/testConfig")
     public String testConfig() {

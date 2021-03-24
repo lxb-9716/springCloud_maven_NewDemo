@@ -1,7 +1,14 @@
 spring:
+  application:
+    name: spring-cloud-config-client
   cloud:
-    config:
-      name: configTest #指定要获取的配置文件的名字
+    config:        #springcloud配置中心config客户端相关配置
+      label: master
+      profile: dev
       discovery:
-        enabled: true #开启配置信息发现
-        serviceId: spring-cloud-cinfig-server #指定配置中心服务的id
+        enabled: true
+        service-id: spring-cloud-config-server
+eureka:     #eureka客户端相关的配置
+  client:
+    serviceUrl:
+      defaultZone: http://eurekaServer1:31001/eureka/,http://eurekaServer2:31002/eureka/   #注册中心的集群配置

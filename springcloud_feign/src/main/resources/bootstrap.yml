@@ -6,9 +6,9 @@ spring:
       label: master
       profile: dev
       discovery:
-        service-id: spring-cloud-cinfig-server
+        service-id: spring-cloud-config-server
         enabled: true
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://eurekaServer1:31001/eureka/,http://eurekaServer2:31002/eureka/   #注册中心的集群配置
+      defaultZone: http://eurekaServer1:31001/eureka/,http://eurekaServer2:31002/eureka/    #注册中心的集群配置
