@@ -3,4 +3,6 @@ Spring:
     active: feign,db
 server:
   port: 31004
-
+feign:
+  hystrix:
+    enabled: true

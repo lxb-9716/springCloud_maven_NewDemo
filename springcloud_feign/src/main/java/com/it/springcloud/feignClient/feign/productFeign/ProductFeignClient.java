@@ -4,13 +4,13 @@ import com.it.springcloud.common.page.basicPage.Page;
 import com.it.springcloud.common.request.RequestBussiness;
 import com.it.springcloud.common.response.ResponseBusinessPage;
 import com.it.springcloud.common.response.ResponseResult;
+import com.it.springcloud.feignClient.feign.productFeignHystrix.ProductFeignFallBack;
 import com.it.springcloud.model.productVO.Product;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
-@Component
-@FeignClient(value = "spring-cloud-swagger-data")
+//当feign远程调用接口方法失败的时候，会进行回调ProductFeignClientHystrix类中的方法
+@FeignClient(value = "spring-cloud-swagger-data", fallback = ProductFeignFallBack.class)
 @RequestMapping("/product")
 public interface ProductFeignClient {
     /*保存商品用户信息*/
@@ -18,7 +18,7 @@ public interface ProductFeignClient {
     public ResponseResult save(@RequestBody RequestBussiness<Product> requestBussiness);
 
     /*根据id删除商品信息*/
-    @GetMapping(value = "/deleteProductById/{id}", produces = "application/json;charset=UTF-8")
+    @GetMapping(value = "/deleteById/{id}", produces = "application/json;charset=UTF-8")
     public ResponseResult deleteProductById(@PathVariable(value = "id", required = true) Integer id);
 
 
