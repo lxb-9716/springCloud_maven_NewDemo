@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="spring_cloud_eurekaServer" />
+        <module name="springcloud_api" />
         <module name="springcloud_common" />
         <module name="springcloud_config_client" />
         <module name="springcloud_config_server" />

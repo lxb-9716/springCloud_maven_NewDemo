@@ -2,10 +2,11 @@ package com.it.springcloud.feignClient.controller;
 
 import com.it.springcloud.common.page.basicPage.Page;
 import com.it.springcloud.common.request.RequestBussiness;
+import com.it.springcloud.common.response.ResponseBusiness;
 import com.it.springcloud.common.response.ResponseBusinessPage;
 import com.it.springcloud.common.response.ResponseResult;
-import com.it.springcloud.feignClient.feign.productFeign.ProductFeignClient;
-import com.it.springcloud.model.productVO.Product;
+import com.it.springcloud.feignClient.feign.product.ProductFeignClient;
+import com.it.springcloud.model.pojo.product.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -40,8 +41,13 @@ public class ProductFeignController {
 
     /*查询所有商品的信息,带分页*/
     @GetMapping("/findAllProductPage/{page}/{size}")
-    public ResponseBusinessPage<Page<Product>> findAllProductPage(@PathVariable(value = "page", required = true) int page, @PathVariable(value = "size", required = true) int size) {
+    public ResponseBusinessPage<Product> findAllProductPage(@PathVariable(value = "page", required = true) int page, @PathVariable(value = "size", required = true) int size) {
         return productFeignClient.findAllProductPage(page, size);
+    }
+
+    @GetMapping(value = "/findProductById/{id}", produces = "application/json;charset=UTF-8")
+    public ResponseBusiness<Product> findProductById(@PathVariable("id") Integer id) {
+        return productFeignClient.findProductById(id);
     }
 
 }

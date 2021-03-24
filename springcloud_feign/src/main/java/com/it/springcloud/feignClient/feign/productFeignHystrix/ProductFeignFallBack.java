@@ -2,17 +2,14 @@ package com.it.springcloud.feignClient.feign.productFeignHystrix;
 
 import com.it.springcloud.common.page.basicPage.Page;
 import com.it.springcloud.common.request.RequestBussiness;
+import com.it.springcloud.common.response.ResponseBusiness;
 import com.it.springcloud.common.response.ResponseBusinessPage;
 import com.it.springcloud.common.response.ResponseResult;
 import com.it.springcloud.common.response.basicRes.CommonCode;
-import com.it.springcloud.feignClient.feign.productFeign.ProductFeignClient;
-import com.it.springcloud.model.productVO.Product;
-import feign.hystrix.FallbackFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.it.springcloud.feignClient.feign.product.ProductFeignClient;
+import com.it.springcloud.model.pojo.product.Product;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.servlet.http.HttpServletRequest;
 
 @Component
 @RequestMapping("/productFeignFullBack")
@@ -22,7 +19,7 @@ public class ProductFeignFallBack implements ProductFeignClient {
     public ResponseResult save(RequestBussiness<Product> requestBussiness) {
         ResponseResult responseResult = new ResponseResult();
         responseResult.setCode(CommonCode.FAIL.code());
-        responseResult.setMessage("调用远程的保存商品方法失败！！！");
+        responseResult.setMessage("调用远程的保存商品信息方法失败！！！");
         return responseResult;
     }
 
@@ -35,10 +32,18 @@ public class ProductFeignFallBack implements ProductFeignClient {
     }
 
     @Override
-    public ResponseBusinessPage<Page<Product>> findAllProductPage(int page, int size) {
-        ResponseBusinessPage<Page<Product>> businessPage = new ResponseBusinessPage<>();
+    public ResponseBusinessPage<Product> findAllProductPage(int page, int size) {
+        ResponseBusinessPage<Product> businessPage = new ResponseBusinessPage<>();
         businessPage.setCode(CommonCode.FAIL.code());
         businessPage.setMessage("调用远程的查询所有商品信息方法失败！！！");
         return businessPage;
+    }
+
+    @Override
+    public ResponseBusiness<Product> findProductById(Integer id) {
+        ResponseBusiness<Product> responseBusiness = new ResponseBusiness<>();
+        responseBusiness.setCode(CommonCode.FAIL.code());
+        responseBusiness.setMessage("调用远程的保存商品方法失败！！！");
+        return responseBusiness;
     }
 }

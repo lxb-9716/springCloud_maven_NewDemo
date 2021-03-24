@@ -1,5 +1,6 @@
 package com.it.springcloud.swagger.controller.productController;
 
+import com.it.springcloud.api.product.ProductApi;
 import com.it.springcloud.common.request.ReqBody;
 import com.it.springcloud.common.request.RequestBussiness;
 import com.it.springcloud.common.response.ResponseBusiness;
@@ -8,7 +9,6 @@ import com.it.springcloud.common.response.ResponseResult;
 import com.it.springcloud.common.response.basic.RespBody;
 import com.it.springcloud.common.response.basicRes.CommonCode;
 import com.it.springcloud.model.pojo.product.Product;
-import com.it.springcloud.swagger.api.product.ProductApi;
 import com.it.springcloud.swagger.service.productService.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,15 +17,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/product")
 public class ProductController implements ProductApi {
 
     @Autowired
     private ProductService productService;
 
     /*保存商品用户信息*/
-    @PostMapping(value = "/save", produces = "application/json;charset=UTF-8")
-    /*@ApiOperation(value = "添加商品信息")*/
     public ResponseResult save(@RequestBody RequestBussiness<Product> requestBussiness) {
         ReqBody<Product> requestBody = requestBussiness.getRequestBody();
         Product data = requestBody.getData();
@@ -42,17 +39,12 @@ public class ProductController implements ProductApi {
     }
 
     /*根据id删除商品信息*/
-    @GetMapping(value = "/deleteProductById/{id}", produces = "application/json;charset=UTF-8")
-    @Override
-    /*    @ApiOperation(value = "根据id删除商品信息")*/
     public ResponseResult deleteProductById(@PathVariable(value = "id", required = true) Integer id) {
         productService.deleteProductById(id);
         return new ResponseResult(CommonCode.SUCCESS);
     }
 
     /*查询所有商品的信息,带分页*/
-    @GetMapping("/findAllProductPage/{page}/{size}")
-    @Override
     public ResponseBusinessPage<Product> findAllProductPage(@PathVariable("page") int page, @PathVariable("size") int size) {
         if (page <= 0) {
             page = 0;
@@ -67,8 +59,6 @@ public class ProductController implements ProductApi {
     }
 
     /*根据商品id查询商品信息*/
-    @Override
-    @GetMapping(value = "/findProductById/{id}", produces = "application/json;charset=UTF-8")
     public ResponseBusiness<Product> findProductById(@PathVariable("id") Integer id) {
         Product product = productService.findProductById(id);
         ResponseBusiness<Product> responseBusiness = new ResponseBusiness<>();
