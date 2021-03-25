@@ -13,6 +13,7 @@
         <module name="springcloud_config_client" />
         <module name="springcloud_config_server" />
         <module name="springcloud_feign" />
+        <module name="springcloud_hystrix_dashboard" />
         <module name="springcloud_model" />
         <module name="springcloud_swagger_data" />
       </profile>
