@@ -18,6 +18,7 @@
         <module>springcloud_config_client</module>
         <module>springcloud_api</module>
         <module>springcloud_hystrix_dashboard</module>
+        <module>springcloud_hystrix_turbine</module>
     </modules>
 
     <parent>

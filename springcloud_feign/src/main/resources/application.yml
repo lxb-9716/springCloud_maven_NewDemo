@@ -1,8 +1,8 @@
 Spring:
   profiles:
-    active: feign,db
-server:
-  port: 31004
+    active: ribon,db
 feign:
   hystrix:
     enabled: true
+server:
+  port: 31004

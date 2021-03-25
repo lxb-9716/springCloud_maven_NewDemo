@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: spring-cloud-hystrix-turbine
+server:
+  port: 31008
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eurekaServer1:31001/eureka/,http://eurekaServer2:31002/eureka/    #注册中心的集群配置
+turbine:
+  instanceUrlSuffix: /hystrix.stream  #没有的话会出现异常
+  aggregator:
+    cluster-config: default
+  app-config: spring-cloud-feign  #配置Eureka中的serviceId列表，表明监控哪些服务
+  cluster-name-expression: new String("default")

@@ -1,4 +1,4 @@
-package com.it.springcloud.utils;
+package com.it.springcloud.feignClient.utils;
 
 import org.springframework.util.StringUtils;
 
