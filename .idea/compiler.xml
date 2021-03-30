@@ -17,6 +17,7 @@
         <module name="springcloud_hystrix_turbine" />
         <module name="springcloud_model" />
         <module name="springcloud_swagger_data" />
+        <module name="springcloud_zuul_gatway" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

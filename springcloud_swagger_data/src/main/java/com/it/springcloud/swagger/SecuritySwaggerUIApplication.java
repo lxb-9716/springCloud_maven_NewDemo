@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
 @EnableEurekaClient
-@EntityScan(basePackages = "com.it.springcloud.model.pojo")//扫描实体类所在的包路径
-@ComponentScan(basePackages = "com.it.springcloud")
+@EntityScan(basePackages = "com.it.springcloud.model.pojo")//扫描jpa实体类所在的包路径
+@ComponentScan(basePackages = "com.it.springcloud")//扫描注解
 @Configuration(value = "application-db.yml")//加载mongodb的配置文件
 public class SecuritySwaggerUIApplication {
     public static void main(String[] args) {

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: spring-cloud-swagger-data
+    name: spring-cloud-swagger-data-server
 eureka:
   client:
     fetch-registry: true #是否需要从服务端获取注册信息

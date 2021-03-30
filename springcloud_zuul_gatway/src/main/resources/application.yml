@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: spring-cloud-zuul-gatway-server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eurekaServer1:31001/eureka/,http://eurekaServer2:31002/eureka/    #注册中心的集群配置
+server:
+  port: 31009
+zuul:
+  routes:   #路由的名称集合
+    spring-cloud-swagger-data-server: /api/v1/gatway/**   #自定义网关转发微服务的请求路径，spring-cloud-swagger-data-server表示在eureka中注册的服务名
+    spring-cloud-feign: /api/v1/gatway/** #自定义网关转发微服务的请求路径，如果自定义的路径相同的话，最下边的服务会把上面的服务覆盖掉，上边的服务通过网关不会访问成功
+  ignored-services: spring-cloud-swagger-data-server  #屏蔽根据这个服务名访问的方式，统一使用上面的路由访问方式
+  sensitiveHeaders:  #未进行该配置的时候，请求头中的内容可能会会被拦截过滤掉，比如当请求头中带有cookie的时候，默认的配置会把cookie拦截掉

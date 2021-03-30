@@ -19,6 +19,7 @@
         <module>springcloud_api</module>
         <module>springcloud_hystrix_dashboard</module>
         <module>springcloud_hystrix_turbine</module>
+        <module>springcloud_zuul_gatway</module>
     </modules>
 
     <parent>

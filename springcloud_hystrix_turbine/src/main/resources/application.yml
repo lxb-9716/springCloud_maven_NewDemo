@@ -1,6 +1,6 @@
 spring:
   application:
-    name: spring-cloud-hystrix-turbine
+    name: spring-cloud-hystrix-turbine-server
 server:
   port: 31008
 eureka:

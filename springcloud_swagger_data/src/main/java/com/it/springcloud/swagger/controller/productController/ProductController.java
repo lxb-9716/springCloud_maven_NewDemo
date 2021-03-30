@@ -13,6 +13,8 @@ import com.it.springcloud.swagger.service.productService.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +23,8 @@ public class ProductController implements ProductApi {
 
     @Autowired
     private ProductService productService;
+    @Autowired
+    private HttpServletRequest request;
 
     /*保存商品用户信息*/
     public ResponseResult save(@RequestBody RequestBussiness<Product> requestBussiness) {
@@ -46,6 +50,11 @@ public class ProductController implements ProductApi {
 
     /*查询所有商品的信息,带分页*/
     public ResponseBusinessPage<Product> findAllProductPage(@PathVariable("page") int page, @PathVariable("size") int size) {
+        String token = request.getHeader("token");
+        System.out.println("token：" + token);
+        String cookie = request.getHeader("cookie");
+        System.out.println("cookie：" + cookie);
+        Cookie[] cookies = request.getCookies();
         if (page <= 0) {
             page = 0;
         }

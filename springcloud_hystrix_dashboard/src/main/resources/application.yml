@@ -1,6 +1,6 @@
 spring:
   application:
-    name: spring-cloud-hystrix-dashboard
+    name: spring-cloud-hystrix-dashboard-server
 server:
   port: 31007
 eureka:
