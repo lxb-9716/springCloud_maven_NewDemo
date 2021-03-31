@@ -1,13 +1,12 @@
 package com.it.springcloud.feignClient.feign.productFeignHystrix;
 
-import com.it.springcloud.common.page.basicPage.Page;
 import com.it.springcloud.common.request.RequestBussiness;
 import com.it.springcloud.common.response.ResponseBusiness;
 import com.it.springcloud.common.response.ResponseBusinessPage;
 import com.it.springcloud.common.response.ResponseResult;
 import com.it.springcloud.common.response.basicRes.CommonCode;
 import com.it.springcloud.feignClient.feign.product.ProductFeignClient;
-import com.it.springcloud.model.pojo.product.Product;
+import com.it.springcloud.model.pojo.jpa.product.Product;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 

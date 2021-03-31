@@ -11,6 +11,8 @@
     <file url="file://$PROJECT_DIR$/springcloud_hystrix_dashboard" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springcloud_hystrix_turbine" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springcloud_model" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud_rabbitmq_consumer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud_rabbitmq_producer" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springcloud_swagger_data" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springcloud_zuul_gatway" charset="UTF-8" />
   </component>

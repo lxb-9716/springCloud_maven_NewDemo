@@ -1,3 +1,6 @@
 spring:
   profiles:
     active: eurekaClient,db
+mybatis:
+  mapper-locations: classpath:com/it/springcloud/model/pojo/mybatis/mapper/dao/*.xml
+  type-aliases-package: com.it.springcloud.model.pojo.mybatis.mapper.entity

@@ -4,7 +4,7 @@ import com.it.springcloud.common.request.RequestBussiness;
 import com.it.springcloud.common.response.ResponseBusiness;
 import com.it.springcloud.common.response.ResponseBusinessPage;
 import com.it.springcloud.common.response.ResponseResult;
-import com.it.springcloud.model.pojo.product.Product;
+import com.it.springcloud.model.pojo.jpa.product.Product;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

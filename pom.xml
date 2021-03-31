@@ -20,6 +20,8 @@
         <module>springcloud_hystrix_dashboard</module>
         <module>springcloud_hystrix_turbine</module>
         <module>springcloud_zuul_gatway</module>
+        <module>springcloud_rabbitmq_producer</module>
+        <module>springcloud_rabbitmq_consumer</module>
     </modules>
 
     <parent>

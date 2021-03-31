@@ -4,7 +4,8 @@ import com.it.springcloud.common.response.ResultCode;
 
 public enum CommonCode implements ResultCode {
     SUCCESS("000000", "操作成功！"),
-    FAIL("111111", "操作失败！");
+    NOT_FOUND("111111", "调用接口成功，但是没有查询到数据!"),
+    FAIL("111111", "调用接口失败！");
     //操作代码
     String code;
     //提示信息

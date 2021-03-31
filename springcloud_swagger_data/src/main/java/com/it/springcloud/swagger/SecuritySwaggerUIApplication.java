@@ -1,5 +1,6 @@
 package com.it.springcloud.swagger;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableEurekaClient
 @EntityScan(basePackages = "com.it.springcloud.model.pojo")//扫描jpa实体类所在的包路径
 @ComponentScan(basePackages = "com.it.springcloud")//扫描注解
+@MapperScan(basePackages = "com.it.springcloud.model.pojo.mybatis.mapper.dao")//扫描mapper接口(springboot集成mybatis框架)
 @Configuration(value = "application-db.yml")//加载mongodb的配置文件
 public class SecuritySwaggerUIApplication {
     public static void main(String[] args) {
