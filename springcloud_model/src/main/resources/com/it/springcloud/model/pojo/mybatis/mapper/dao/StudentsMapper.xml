@@ -232,4 +232,58 @@
     <select id="findStudentsById" parameterType="Integer" resultType="students">
       select * from students where id =#{id}
     </select>
+
+    <!--根据多个id值查询学生信息-->
+    <select id="findStudentsByIds" parameterType="com.it.springcloud.model.vo.student.StudentVo" resultType="students">
+        select * from students
+        <where>
+            <if test="null !=ids and ids.size()>0">
+                <foreach collection="ids" item="id" open="id in (" close=")" separator=",">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
+    </select>
+    <resultMap id="findStudentWithCourseList"
+               type="com.it.springcloud.model.pojo.mybatis.mapper.entity.extend.StudentsExtend">
+        <id property="id" column="id"/>
+        <id property="sno" column="sno"/>
+        <id property="sname" column="sname"/>
+        <id property="age" column="age"/>
+        <id property="sex" column="sex"/>
+        <id property="bplace" column="bplace"/>
+        <collection property="coursesExtends"
+                    ofType="com.it.springcloud.model.pojo.mybatis.mapper.entity.extend.CoursesExtend">
+            <id property="id" column="id"/>
+            <id property="cno" column="cno"/>
+            <id property="cname" column="cname"/>
+            <id property="credit" column="credit"/>
+            <collection property="stuCouScoreList"
+                        ofType="com.it.springcloud.model.pojo.mybatis.mapper.entity.StuCouScore">
+                <id property="id" column="id"/>
+                <id property="sno" column="sno"/>
+                <id property="cno" column="cno"/>
+                <id property="score" column="score"/>
+            </collection>
+        </collection>
+    </resultMap>
+    <select id="findStudentWithCourse" resultMap="findStudentWithCourseList">
+        select s.id,
+        s.sno,
+        s.sname,
+        s.age,
+        s.sex,
+        s.bplace,
+        o.cno,
+        o.cname,
+        o.credit,
+        scs.score
+        from students s,
+        courses o,
+        stu_cou_score scs
+        <where>
+            s.sno = scs.sno
+            and o.cno = scs.cno;
+        </where>
+    </select>
 </mapper>

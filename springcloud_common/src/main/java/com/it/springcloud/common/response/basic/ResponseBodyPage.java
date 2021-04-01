@@ -7,14 +7,13 @@ public class ResponseBodyPage<T> extends RespBody {
     public ResponseBodyPage() {
     }
 
-    public Paging<T> getProductPage() {
-        return productPage;
+    private Paging<T> paging;
+
+    public Paging<T> getPaging() {
+        return paging;
     }
 
-    public void setProductPage(Paging<T> productPage) {
-        this.productPage = productPage;
+    public void setPaging(Paging<T> paging) {
+        this.paging = paging;
     }
-
-    private Paging<T> productPage;
-
 }

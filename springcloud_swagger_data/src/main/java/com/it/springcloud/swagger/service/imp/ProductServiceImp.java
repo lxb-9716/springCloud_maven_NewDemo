@@ -74,7 +74,7 @@ public class ProductServiceImp implements ProductService {
             if (null != productPage.getContent() && productPage.getContent().size() > 0) {
                 ResponseBodyPage<Product> responseBody = new ResponseBodyPage<>();
                 responseBody.setData(productPage.getContent());
-                responseBody.setProductPage(productPaging);
+                responseBody.setPaging(productPaging);
                 responseBusinessPage.setResponseBodyPage(responseBody);
                 responseBusinessPage.setCode(CommonCode.SUCCESS.code());
                 responseBusinessPage.setMessage(CommonCode.SUCCESS.message());

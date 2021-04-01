@@ -14,7 +14,7 @@ public class LogUtils {
     private LogUtils() {
     }
 
-    public static LogBean save(String className, String methodName, String requestBody, String responseBody, HttpServletRequest request) {
+    public static LogBean save(String className, String methodName, Object requestBody, Object responseBody, HttpServletRequest request) {
         LogBean logBean = new LogBean();
         logBean.setClassName(className);
         logBean.setMethodName(methodName);

@@ -2,10 +2,14 @@ package com.it.springcloud.model.pojo.mybatis.mapper.dao;
 
 import com.it.springcloud.model.pojo.mybatis.mapper.entity.StuCouScore;
 import com.it.springcloud.model.pojo.mybatis.mapper.entity.StuCouScoreExample;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
+@Mapper
 public interface StuCouScoreMapper {
     int countByExample(StuCouScoreExample example);
 
