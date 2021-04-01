@@ -34,4 +34,15 @@ public class StudentServiceImp implements StudentService {
         List<StudentsExtend> studentsExtendList = studentsMapper.findStudentWithCourse();
         return studentsExtendList;
     }
+
+    @Override
+    public int saveStudents(Students students) {
+        int num = studentsMapper.insertSelective(students);
+        return num;
+    }
+
+    @Override
+    public int delStudentsById(Integer id) {
+        return studentsMapper.deleteByPrimaryKey(id);
+    }
 }

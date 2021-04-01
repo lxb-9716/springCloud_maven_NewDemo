@@ -3,9 +3,11 @@ package com.it.springcloud.swagger.controller.student;
 
 import com.alibaba.fastjson.JSON;
 import com.it.springcloud.api.student.StudentApi;
+import com.it.springcloud.common.request.ReqBody;
 import com.it.springcloud.common.request.RequestBussiness;
 import com.it.springcloud.common.response.ResponseBusiness;
 import com.it.springcloud.common.response.ResponseBusinessPage;
+import com.it.springcloud.common.response.ResponseResult;
 import com.it.springcloud.common.response.basic.RespBody;
 import com.it.springcloud.common.response.basic.ResponseBodyPage;
 import com.it.springcloud.common.response.basicRes.CommonCode;
@@ -17,6 +19,7 @@ import com.it.springcloud.swagger.repository.mongoLog.LogRepository;
 import com.it.springcloud.swagger.service.StudentService;
 import com.it.springcloud.swagger.utils.log.LogUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -113,5 +116,45 @@ public class StudentController implements StudentApi {
         LogBean logBean = LogUtils.save(this.getClass().getName(), Thread.currentThread().getStackTrace()[1].getMethodName(), "该接口次请求参数为空", res, request);
         logRepository.save(logBean);
         return res;
+    }
+
+    @Override
+    public ResponseResult saveStudents(@RequestBody RequestBussiness<Students> requestBussiness) {
+        ReqBody<Students> requestBody = requestBussiness.getRequestBody();
+        Students data = requestBody.getData();
+        ResponseResult responseResult = new ResponseResult();
+        try {
+            if (null != data) {
+                int i = studentService.saveStudents(data);
+                if (1 == i) {
+                    responseResult.setCode(CommonCode.SUCCESS.code());
+                    responseResult.setMessage(CommonCode.SUCCESS.message());
+                }
+            }
+        } catch (Exception e) {
+            responseResult.setCode(CommonCode.FAIL.code());
+            responseResult.setMessage(e.getMessage());
+        }
+        //保存日志信息
+        LogBean logBean = LogUtils.save(this.getClass().getName(), Thread.currentThread().getStackTrace()[1].getMethodName(), requestBussiness, responseResult, request);
+        logRepository.save(logBean);
+        return responseResult;
+    }
+
+    @Override
+    public ResponseResult delStudentsById(@PathVariable("id") Integer id) {
+        ResponseResult responseResult = new ResponseResult();
+        try {
+            int i = studentService.delStudentsById(id);
+            responseResult.setCode(CommonCode.SUCCESS.code());
+            responseResult.setMessage(CommonCode.SUCCESS.message());
+        } catch (Exception e) {
+            responseResult.setCode(CommonCode.FAIL.code());
+            responseResult.setMessage(e.getMessage());
+        }
+        //保存日志信息
+        LogBean logBean = LogUtils.save(this.getClass().getName(), Thread.currentThread().getStackTrace()[1].getMethodName(), id, responseResult, request);
+        logRepository.save(logBean);
+        return responseResult;
     }
 }

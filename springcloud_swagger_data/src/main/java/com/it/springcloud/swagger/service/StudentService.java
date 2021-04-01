@@ -30,4 +30,8 @@ public interface StudentService {
      * @return
      */
     public List<StudentsExtend> findStudentWithCourse();
+
+    public int saveStudents(Students students);
+
+    public int delStudentsById(Integer id);
 }
