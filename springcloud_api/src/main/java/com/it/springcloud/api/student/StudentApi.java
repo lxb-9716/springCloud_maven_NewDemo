@@ -1,4 +1,5 @@
 package com.it.springcloud.api.student;
+
 import com.it.springcloud.common.response.ResponseBusiness;
 import com.it.springcloud.model.pojo.mybatis.mapper.entity.Students;
 import io.swagger.annotations.Api;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/student")
 public interface StudentApi {
 
-    /*根据商品id查询商品信息*/
+    /*根据商品id查询学生信息*/
     @ApiOperation("根据id查询学生信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "主键id", required = true,

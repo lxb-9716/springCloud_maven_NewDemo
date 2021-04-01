@@ -8941,7 +8941,7 @@ tenant_id</ColNames>
       <DataType>tinytext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="1677" parent="334" name="class">
+    <column id="1677" parent="334" name="className">
       <Position>4</Position>
       <DataType>tinytext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
@@ -9217,7 +9217,7 @@ user_name</ColNames>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="1726" parent="342" name="class">
+    <column id="1726" parent="342" name="className">
       <Position>4</Position>
       <Comment>班级</Comment>
       <DataType>varchar(6)|0s</DataType>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.it.springcloud.model.pojo.mybatis.mapper.dao.TeaCouClassMapper" >
+  <resultMap id="BaseResultMap" type="com.it.springcloud.model.pojo.mybatis.mapper.entity.TeaCouClass" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tno" property="tno" jdbcType="DECIMAL" />
+    <result column="cno" property="cno" jdbcType="VARCHAR" />
+    <result column="className" property="classname" jdbcType="VARCHAR" />
+    <result column="snum" property="snum" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, tno, cno, className, snum
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.it.springcloud.model.pojo.mybatis.mapper.entity.TeaCouClassExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tea_cou_class
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tea_cou_class
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tea_cou_class
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.it.springcloud.model.pojo.mybatis.mapper.entity.TeaCouClassExample" >
+    delete from tea_cou_class
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.it.springcloud.model.pojo.mybatis.mapper.entity.TeaCouClass" >
+    insert into tea_cou_class (id, tno, cno, 
+      className, snum)
+    values (#{id,jdbcType=INTEGER}, #{tno,jdbcType=DECIMAL}, #{cno,jdbcType=VARCHAR}, 
+      #{classname,jdbcType=VARCHAR}, #{snum,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.it.springcloud.model.pojo.mybatis.mapper.entity.TeaCouClass" >
+    insert into tea_cou_class
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="tno != null" >
+        tno,
+      </if>
+      <if test="cno != null" >
+        cno,
+      </if>
+      <if test="classname != null" >
+        className,
+      </if>
+      <if test="snum != null" >
+        snum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tno != null" >
+        #{tno,jdbcType=DECIMAL},
+      </if>
+      <if test="cno != null" >
+        #{cno,jdbcType=VARCHAR},
+      </if>
+      <if test="classname != null" >
+        #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="snum != null" >
+        #{snum,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.it.springcloud.model.pojo.mybatis.mapper.entity.TeaCouClassExample" resultType="java.lang.Integer" >
+    select count(*) from tea_cou_class
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tea_cou_class
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.tno != null" >
+        tno = #{record.tno,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cno != null" >
+        cno = #{record.cno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classname != null" >
+        className = #{record.classname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.snum != null" >
+        snum = #{record.snum,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tea_cou_class
+    set id = #{record.id,jdbcType=INTEGER},
+      tno = #{record.tno,jdbcType=DECIMAL},
+      cno = #{record.cno,jdbcType=VARCHAR},
+      className = #{record.classname,jdbcType=VARCHAR},
+      snum = #{record.snum,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.it.springcloud.model.pojo.mybatis.mapper.entity.TeaCouClass" >
+    update tea_cou_class
+    <set >
+      <if test="tno != null" >
+        tno = #{tno,jdbcType=DECIMAL},
+      </if>
+      <if test="cno != null" >
+        cno = #{cno,jdbcType=VARCHAR},
+      </if>
+      <if test="classname != null" >
+        className = #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="snum != null" >
+        snum = #{snum,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.it.springcloud.model.pojo.mybatis.mapper.entity.TeaCouClass" >
+    update tea_cou_class
+    set tno = #{tno,jdbcType=DECIMAL},
+      cno = #{cno,jdbcType=VARCHAR},
+      className = #{classname,jdbcType=VARCHAR},
+      snum = #{snum,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

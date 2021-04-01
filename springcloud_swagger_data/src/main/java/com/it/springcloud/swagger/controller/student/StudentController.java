@@ -10,14 +10,13 @@ import com.it.springcloud.model.pojo.jpa.mongodb.LogBean;
 import com.it.springcloud.model.pojo.mybatis.mapper.entity.Students;
 import com.it.springcloud.swagger.repository.mongoLog.LogRepository;
 import com.it.springcloud.swagger.service.StudentService;
+import com.it.springcloud.swagger.utils.log.LogUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -32,19 +31,6 @@ public class StudentController implements StudentApi {
     @Override
     public ResponseBusiness<Students> findStudentById(@PathVariable("id") Integer id) {
         ResponseBusiness<Students> res = new ResponseBusiness<>();
-        LogBean logBean = new LogBean();
-        logBean.setCreateDate(new Date());
-        logBean.setClassName(this.getClass().getName());
-        logBean.setRequestBody(id + "");
-        logBean.setMethodName(Thread.currentThread().getStackTrace()[1].getMethodName());
-        StringBuffer url = request.getRequestURL();
-        String requestType = request.getMethod();
-        logBean.setRequestType(requestType);
-        if (!StringUtils.isEmpty(url)) {
-            logBean.setUrl(url.toString());
-        } else {
-            logBean.setUrl("请求路径url空");
-        }
         Students student = studentService.findStudentById(id);
         try {
             if (null != student) {
@@ -64,8 +50,8 @@ public class StudentController implements StudentApi {
             res.setMessage(CommonCode.FAIL.message());
             e.getMessage();
         }
-        logBean.setResponseBody(JSON.toJSONString(res));
         //保存日志信息
+        LogBean logBean = LogUtils.save(this.getClass().getName(), Thread.currentThread().getStackTrace()[1].getMethodName(), id.toString(), res.toString(), request);
         logRepository.save(logBean);
         return res;
     }

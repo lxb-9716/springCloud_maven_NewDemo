@@ -2,6 +2,7 @@ package com.it.springcloud.model.pojo.mybatis.mapper.dao;
 
 import com.it.springcloud.model.pojo.mybatis.mapper.entity.Students;
 import com.it.springcloud.model.pojo.mybatis.mapper.entity.StudentsExample;
+
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -32,4 +33,6 @@ public interface StudentsMapper {
     int updateByPrimaryKeySelective(Students record);
 
     int updateByPrimaryKey(Students record);
+
+    Students findStudentsById(Integer id);
 }
