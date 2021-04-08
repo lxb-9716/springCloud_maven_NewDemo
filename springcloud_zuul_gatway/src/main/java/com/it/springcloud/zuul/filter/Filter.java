@@ -54,7 +54,7 @@ public class Filter extends ZuulFilter {
         StringBuffer requestURL = request.getRequestURL();
         System.out.println("URL：" + requestURL);
         //如果请求的是这个资源路径就进行拦截
-        if ("/api/v1/gatway/data/product/findAllProductPage/0/2".equals(requestURI)) {
+        if (requestURI.startsWith("/api/v1/gatway")) {
             return true;
         }
         return false;

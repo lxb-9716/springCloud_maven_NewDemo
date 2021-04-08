@@ -6,3 +6,9 @@ feign:
     enabled: true
 server:
   port: 31004
+spring:
+  freemarker:
+    suffix: .ftl
+    charset: UTF-8
+    settings:
+      classic_compatible: true

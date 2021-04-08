@@ -5,11 +5,11 @@ spring:
     name: spring-cloud-config-server
   cloud:
     config:
-      label: master   #分支名称
+      label: master   #从哪个分支上拉取配置文件，指定分支的名称
       server:
         git:
-          uri: https://github.com/lxb-9716/springCloud_maven_NewDemo #git地址
-          search-paths: config-resp  #搜索路径
+          uri: https://github.com/lxb-9716/springCloud_maven_NewDemo # 远程git地址
+          search-paths: config-resp  #指定从哪个路径下开始搜索
 eureka:
   client:
     fetch-registry: true #是否需要从服务端获取注册信息

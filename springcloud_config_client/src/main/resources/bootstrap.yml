@@ -1,13 +1,13 @@
 spring:
   application:
-    name: spring-cloud-config-client
+    name: spring-cloud-config-client  #注意配置中心客户端的名字必须和git上要拉去的文件名保持一致
   cloud:
     config:        #springcloud配置中心config客户端相关配置
-      label: master
-      profile: dev
+      label: master  #指定git分支的名称
+      profile: dev   #指定要拉取文件类型   dev开发
       discovery:
-        enabled: true
-        service-id: spring-cloud-config-server
+        enabled: true    #是否允许被发现
+        service-id: spring-cloud-config-server  #指定在注册中心已经注册的config配置中心服务端的服务名
 eureka:     #eureka客户端相关的配置
   client:
     serviceUrl:

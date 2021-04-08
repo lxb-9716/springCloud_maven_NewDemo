@@ -17,3 +17,8 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/logs
+  banner:
+    charset: utf-8
+    location: banner.text  #修改控制台默认的启动图标标识
+  main:
+    banner-mode: console
